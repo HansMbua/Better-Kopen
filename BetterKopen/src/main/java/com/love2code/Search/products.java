@@ -9,6 +9,8 @@ public class products {
     private String reviews;
     private String rating;
     private String product_link;
+    private String source;
+    private String thumbnail;
 
 
     public String getProduct_id() {
@@ -57,5 +59,21 @@ public class products {
 
     public void setProduct_link(String product_link) {
         this.product_link = product_link;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }
