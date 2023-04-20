@@ -1,6 +1,5 @@
 package com.love2code.Search;
 
-import java.util.List;
 
 public class products {
     private String product_id;
