@@ -11,9 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -21,16 +19,13 @@ import java.util.stream.Collectors;
 public class productService {
     private final RestTemplate restTemplate = new RestTemplate();
     private  ObjectMapper objectMapper = new ObjectMapper();
-//    private static final String API_KEY = "fd72fc09cf63fb2554d4e05b06ef8a782f7df7301edb0a17521670cbe761a3e6"; new API
+    // private static final String API_KEY = "fd72fc09cf63fb2554d4e05b06ef8a782f7df7301edb0a17521670cbe761a3e6"; new API
     private static final String API_KEY = "b293fd3dda3d83ecbcc45de2303f963a8030c14819e318cb6566e730d5f3c24d";
     // private static final String BASE_URL = "https://serpapi.com/search.json?engine=google_shopping&q=Macbook+16&api_key=" + API_KEY;
 
-
-
-
-
     public List<products> search(String query, int limit) {
         List<products> productList = new ArrayList<>();
+        String[] marketplace = {"Amazon","Apple","Ebay"};
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromUriString("https://serpapi.com/search.json")
                 .queryParam("engine", "google_shopping")
@@ -62,14 +57,29 @@ public class productService {
 
             }
         }
+        return Arrays.asList(marketplace).stream().flatMap(content -> productList.stream().filter(products -> products.getSource()
+                .contains(content))).limit(limit).collect(Collectors.toList());
 
-        return productList.stream().limit(limit).collect(Collectors.toList());
+
     }
 
     public List<products> sortProductsByPrice(List<products> TheProducts) {
         List<products> sortedList = new ArrayList<>(TheProducts);
         sortedList.sort(Comparator.comparing(products::getPrice));
         return sortedList;
+    }
+    public static Map<String, List<products>> groupByMarketplace(List<products> theProducts) {
+        Map<String, List<products>> resultMap = new HashMap<>();
+        for (products product : theProducts) {
+            String marketplace = product.getSource();
+            List<products> productList = resultMap.get(marketplace);
+            if (productList == null) {
+                productList = new ArrayList<>();
+                resultMap.put(marketplace, productList);
+            }
+            productList.add(product);
+        }
+        return resultMap;
     }
 
 

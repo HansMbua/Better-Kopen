@@ -21,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,12 @@ public class IndexController {
 
         List<products> theproducts = theProductService.search(query, 9);
         model.addAttribute("productList", theproducts);
+
+
+        // Group the products by marketplace
+        Map<String, List<products>> resultMap = productService.groupByMarketplace(theproducts);
+        // Add the resultMap to the model for the view to use
+        model.addAttribute("resultMap", resultMap);
 
         return "index";
     }
