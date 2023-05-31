@@ -6,15 +6,15 @@ import java.util.List;
 
 public class SearchResults {
 
-    private List<products> shopping_results;
+    private List<Stork> shopping_results;
     private List<search_information> search_information;
 
 
-    public List<products> getShopping_results() {
+    public List<Stork> getShopping_results() {
         return shopping_results;
     }
 
-    public void setShopping_results(List<products> shopping_results) {
+    public void setShopping_results(List<Stork> shopping_results) {
         this.shopping_results = shopping_results;
     }
 
