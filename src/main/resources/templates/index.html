@@ -74,9 +74,9 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <div >
-                        <div th:insert="Components/ProductSearch :: search-panel"></div>
-                    </div>
+<!--                    <div >-->
+<!--                        <div th:insert="Components/ProductSearch :: search-panel"></div>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -99,47 +99,54 @@
         <div class="col-sm-3">
             <div class="left-sidebar">
                 <h2>Category</h2>
-                <div class="panel-group category-products" id="accordian"><!--category-products-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                    <span class="badge pull-right"><i id="icon" class="fa fa-caret-right"></i></span>
-                                    Sportswear
-                                </a>
-                            </h4>
+                <div class="panel-group category-products" id="accordian"><!--category-Stork-->
+
+                                <form id="myForm" action="/search" method="post">
+
+                                    <div class="">
+                                        <input type="text" name="query" class="search_box pull-right form-control" placeholder="Search for a product" aria-label="Search query" aria-describedby="button-addon2">
+                                        <button type="submit" class="btn btn-outline-secondary" id="button-addon2">Search</button>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                                    <span class="badge pull-right"><i id="icon" class="fa fa-caret-right"></i></span>
+                                                    Sportswear
+                                                </a>
+                                            </h4>
+                                        </div>
+
+                                    <div id="sportswear" class="panel-collapse collapse">
+                                        <div class="panel-body">
+
+
+<!--                                    <ul>-->
+<!--                                        <li th:each="filter : ${filterLists}">-->
+<!--                                            <input type="checkBox" id="checkbox1" name="checkboxes" th:value="filter.name"  th:checked="${filter.selected}" class="myCheckbox" data-index="0">-->
+<!--                                            <label th:for="checkbox1" th:text="${filter.name}">Appel</label><br>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+
+                                            <ul>
+                                                <li th:each=" filter : ${filterLists}">
+                                                    <input type="checkbox" id="checkbox1" name="checkedCheckboxes" th:value="${filter.name}"  th:checked="${filter.selected}">
+                                                    <label th:for="checkbox1" th:text="${filter.name}">Appel</label><br>
+                                                </li>
+                                            </ul>
+
+                            </div>
                         </div>
-                        <div id="sportswear" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <form action="#" th:action="@{/submitForm}" method="post">
 
-                                    <ul>
-
-                                        <li>
-
-                                            <input id="option1" type="checkbox" th:name="options" value="option1" />
-                                            <a for="option1" >nike</a>
-                                        </li>
-                                        <!--                                            <li>-->
-                                        <!--                                                <input type="checkbox"/>-->
-                                        <!--                                                <a href="#">Adidas </a>-->
-                                        <!--                                            </li>-->
-                                        <!--                                            <li>-->
-                                        <!--                                                <input type="checkbox"/>-->
-                                        <!--                                                <a href="#">Puma</a>-->
-                                        <!--                                            </li>-->
-                                        <!--                                            <li>-->
-                                        <!--                                                <input type="checkbox"/>-->
-                                        <!--                                                <a href="#">ASICS </a></li>-->
-                                    </ul>
+                    </div>
 
                                 </form>
 
 
 
-                            </div>
-                        </div>
-                    </div>
+
+
 
 
                     <div class="panel panel-default">
@@ -153,7 +160,7 @@
                         </div>
                     </div>
 
-                </div><!--/category-products-->
+                </div><!--/category-Stork-->
 
                 <div class="brands-name"><!--Marketplace-->
                     <h2>Marketplace</h2>
@@ -210,8 +217,6 @@
                         </div> <!-- end of card group -->
                     </div>
 
-
-
                 </div>
 
 
@@ -240,7 +245,7 @@
 <script type="text/javascript" th:src="@{/css/js/jquery.prettyPhoto.js}"></script>
 <script type="text/javascript" th:src="@{/css/js/main.js}"></script>
 <script type="text/javascript" th:src="@{/css/js/js.js}"></script>
-
+<script type="text/javascript" th:src="@{/css/js/checkSubmission.js}"></script>
 
 </body>
 </html>
