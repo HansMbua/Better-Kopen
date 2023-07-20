@@ -30,6 +30,12 @@ public class IndexController {
         checkBoxes.add(new checkBox("Apple"));
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "Login";
+    }
+
+
 
 
    @GetMapping("/")
