@@ -38,7 +38,7 @@ public class IndexController {
 
 
 
-   @GetMapping("/")
+   @GetMapping("/home")
     public String Home(Model model ){
 
 
