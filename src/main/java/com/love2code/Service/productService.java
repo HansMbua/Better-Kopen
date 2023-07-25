@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class productService {
     private final RestTemplate restTemplate = new RestTemplate();
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     // private static final String API_KEY = "fd72fc09cf63fb2554d4e05b06ef8a782f7df7301edb0a17521670cbe761a3e6"; new API
     private static final String API_KEY = "b293fd3dda3d83ecbcc45de2303f963a8030c14819e318cb6566e730d5f3c24d";
     // private static final String BASE_URL = "https://serpapi.com/search.json?engine=google_shopping&q=Macbook+16&api_key=" + API_KEY
