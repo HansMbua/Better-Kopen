@@ -31,9 +31,35 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login(Model model){
+
+        // get login information username and password
+        // check if the username and password are correct
+        // if correct, redirect to the home page
+        // if not correct, redirect to the login page again
+
+        // add checkBoxes on page
+        model.addAttribute("filterLists", checkBoxes);
+        // add search results to the view page
+       // model.addAttribute("productList", theProductService.getProducts());
+
+        // return the view name
+        // return "Login";
         return "Login";
     }
+
+    @GetMapping("/register")
+    public String register(Model model){
+
+        // add checkBoxes on page
+        model.addAttribute("filterLists", checkBoxes);
+        // add search results to the view page
+        // model.addAttribute("productList", theProductService.getProducts());
+
+        // return the view name
+        return "signup";
+    }
+
 
 
 
