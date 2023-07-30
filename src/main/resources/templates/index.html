@@ -2,14 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Better Kopen</title>
-    <link type="text/css" rel="stylesheet" th:href="@{/css/css/style.css}">
-    <link type="text/css" rel="stylesheet" th:href="@{/css/css/bootstrap.min.css}">
-    <link type="text/css" th:href="@{css/css/font-awesome.min.css}" rel="stylesheet">
-    <link type="text/css" th:href="@{css/css/prettyPhoto.css}" rel="stylesheet">
-    <link type="text/css" th:href="@{css/css/price-range.css }" rel="stylesheet">
-    <link type="text/css" th:href="@{css/css/animate.css}" rel="stylesheet">
-    <link type="text/css" th:href="@{css/css/responsive.css}" rel="stylesheet">
-    <link type="text/css" th:href="@{css/css/main.css}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" th:href="@{/Css/css/style.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/Css/css/bootstrap.min.css}">
+    <link type="text/css" th:href="@{Css/css/price-range.css }" rel="stylesheet">
+
 
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
@@ -177,17 +173,19 @@
 
 
 </div>
+
+<div th:replace="~{/components/footer :: footer}">  </div>
 </section>
 
 
-<script type="text/javascript" th:src="@{/css/js/jquery.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/jquery.scrollUp.min.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/price-range.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/jquery.prettyPhoto.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/main.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/js.js}"></script>
-<script type="text/javascript" th:src="@{/css/js/checkSubmission.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/jquery.scrollUp.min.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/price-range.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/jquery.prettyPhoto.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/main.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/signup.js}"></script>
+<script type="text/javascript" th:src="@{/Css/js/checkSubmission.js}"></script>
 
 </body>
 </html>
