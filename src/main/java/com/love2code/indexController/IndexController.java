@@ -17,17 +17,28 @@ import java.util.logging.Logger;
 
 @Controller
 public class IndexController {
+
+
     Logger logger = Logger.getLogger(IndexController.class.getName());
     @Autowired
     productService theProductService;
 
     List<checkBox> checkBoxes;
-    @PostConstruct
+@PostConstruct
     public void init(){
         checkBoxes = new ArrayList<>();
         checkBoxes.add(new checkBox("Amazon.com - Seller"));
         checkBoxes.add(new checkBox("eBay"));
         checkBoxes.add(new checkBox("Apple"));
+        checkBoxes.add(new checkBox("Samsung"));
+    }
+
+
+    @GetMapping("/")
+    public String Home(Model model ){
+
+
+        return "index";
     }
 
     @GetMapping("/login")
@@ -45,7 +56,7 @@ public class IndexController {
 
         // return the view name
         // return "Login";
-        return "Login";
+        return "login";
     }
 
     @GetMapping("/register")
@@ -61,17 +72,6 @@ public class IndexController {
     }
 
 
-
-
-
-   @GetMapping("/home")
-    public String Home(Model model ){
-
-
-     return "index";
-    }
-
-
     @PostMapping  ("/search")
     public String getSearchResults(@RequestParam String query, @RequestParam(value = "checkedCheckboxes", required = false) List<String> checkedCheckboxes, Model model) throws JsonProcessingException {
 
@@ -79,11 +79,11 @@ public class IndexController {
 
         //get the query
         theProductService.setTheQuery(query);
-        // call the getquery method and pass the query inside
+        // call thae getquery method and pass the query inside
         // I use the query on the Service class
 
         // search Stork
-        List<Stork> theProducts = theProductService.search(checkedCheckboxes,9);
+        List<Stork> theProducts = theProductService.search(checkedCheckboxes,16);
 
         // add checkBoxes on page
         model.addAttribute("filterLists", checkBoxes);
