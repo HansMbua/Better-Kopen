@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.love2code.Search.Stork;
+import com.love2code.Search.checkBox;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -63,6 +64,7 @@ public class productService {
     }
 
     public List<Stork> search(List<String> checkboxes, int limit) {
+
         if (checkboxes == null || checkboxes.isEmpty()) {
             logger.info("inside the if");
             List<Stork> productList = fetchProductList();
