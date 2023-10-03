@@ -12,12 +12,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class webSecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests((requests) ->
                         requests.requestMatchers(
-                                new AntPathRequestMatcher("/"),
-                                new AntPathRequestMatcher("/search")
+                                        new AntPathRequestMatcher("/"),
+                                        new AntPathRequestMatcher("/search")
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )
@@ -27,10 +27,7 @@ public class webSecurityConfig {
                 );
 
 
-
-
-
-return http.build();
+        return http.build();
     }
 
 
