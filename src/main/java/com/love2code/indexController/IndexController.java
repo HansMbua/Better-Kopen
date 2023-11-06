@@ -34,7 +34,7 @@ public class IndexController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String Home(Model model ){
 
 
@@ -70,7 +70,7 @@ public class IndexController {
         // return the view name
         return "signup";
     }
-
+// todo research on payU
 
     @PostMapping  ("/search")
     public String getSearchResults(@RequestParam String query, @RequestParam(value = "checkedCheckboxes", required = false) List<String> checkedCheckboxes, Model model) throws JsonProcessingException {
@@ -89,8 +89,6 @@ public class IndexController {
         model.addAttribute("filterLists", checkBoxes);
         // add search results to the view page
         model.addAttribute("productList", theProducts);
-
-
 
 
         return "index";
