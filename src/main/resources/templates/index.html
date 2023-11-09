@@ -4,162 +4,72 @@
     <title>Better Kopen</title>
     <link rel="stylesheet" th:href="@{/assets/css/reset.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/assets/css/nav-style.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" type="text/css">
+
     <meta charset="UTF-8"/>
 </head>
 
 <body>
-
 <header id="header">
     <div th:replace="~{/components/navBar :: nav-bar}"></div>
 </header>
+<main>
+<!--Category-->
+    <div class="container">
+        <section>
+            <h2>Category</h2>
 
-<div class="container">
+            <article>
 
-    <div class="row">
+                <form id="myForm" action="/search" method="post">
 
-        <div class="col-sm-3">
-            <div class="left-sidebar">
-                <h2>Category</h2>
-                <div class="panel-group category-products" id="accordian"><!--category-Stork-->
+                    <input type="text" name="query" class="search_box pull-right form-control"
+                           placeholder="Search for a product" aria-label="Search query"
+                           aria-describedby="button-addon2">
+                    <input type="submit" th:value="search">
 
-                    <form id="myForm" action="/search" method="post">
+                </form>
 
-                        <div class="">
-                            <input type="text" name="query" class="search_box pull-right form-control"
-                                   placeholder="Search for a product" aria-label="Search query"
-                                   aria-describedby="button-addon2">
-                            <button type="submit" class="btn btn-outline-secondary" id="button-addon2">Search</button>
-                        </div>
+                <ul>
+                    <li>SportWear</li>
+                    <li>KIDS</li>
+                    <li>FASHION</li>
+                </ul>
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                        <span class="badge pull-right"><i id="icon"
-                                                                          class="fa fa-caret-right"></i></span>
-                                        Sportswear
-                                    </a>
-                                </h4>
-                            </div>
-
-                            <div id="sportswear" class="panel-collapse collapse">
-                                <div class="panel-body">
-
-
-                                    <ul>
-                                        <li th:each=" filter : ${filterLists}">
-                                            <input type="checkbox" id="checkbox1" name="checkedCheckboxes"
-                                                   th:value="${filter.name}" th:checked="${filter.selected}">
-                                            <label th:for="checkbox1" th:text="${filter.name}">Appel</label><br>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </form>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Kids</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">Fashion</a></h4>
-                        </div>
-                    </div>
-
-                </div><!--/category-Stork-->
-
-                <div class="brands-name"><!--Marketplace-->
-                    <h2>Marketplace</h2>
-                    <ul class="nav nav-pills nav-stacked" th:each="entry : ${resultMap}">
-                        <li>
-                            <input type="checkbox" th:value="${entry.key}"/>
-                            <label th:text="${entry.key}"></label>
-                        </li>
-                    </ul>
-                </div>
-
-                <!--Marketplace-->
+            </article>
+            <article>
+                <h2>MARKETPLACE</h2>
+            </article>
+            <article>
+                <h2>BRANDS</h2>
+            </article>
+            <article>
+                <h2>PRICE RANGE</h2>
+            </article>
 
 
-                <!--brands_products-->
-                <div class="brands_products">
+        </section>
 
-                    <h2>Brands</h2>
-                    <div class="brands-name">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-                        </ul>
+        <!--Features Items-->
+        <section>
+            <h2>Features Items</h2>
+            <div class="card-group">  <!-- card group -->
+                <div class="card" th:each="result: ${productList}">
+                    <img th:src="${result.thumbnail}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${result.title}">Card title</h5>
+                        <p th:text="${result.price}">publish_year</p>
+                        <p th:text="${result.source}">publish_year</p>
+                        <p th:text="${result.reviews}">publish_year</p>
+                        <p th:text="${result.rating}">publish_year</p>
+                        <a href="#" th:href="@{${result.getProduct_link()}}" class="btn btn-primary">View Product</a>
                     </div>
                 </div>
-                <!--/brands_products-->
-
-                <!--price-range-->
-
-                <div class="price-range">
-                    <h2>Price Range</h2>
-                    <div class="well text-center">
-                        <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                               data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br/>
-                        <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                    </div>
-                </div>
-
-                <!--/price-range-->
-
-                <div class="shipping text-center"><!--shipping-->
-                    <img src="images/home/shipping.jpg" alt=""/>
-                </div><!--/shipping-->
-
-            </div>
-        </div>
-
-        <div class="col-sm-9 padding-right">
-            <div class="features_items"> <!--features_items-->
-                <h2 class="title text-center">Features Items</h2>
-                <div class="col-sm-20 ">
-                    <div class="product-image-wrapper">
-
-                        <div class="card-group">  <!-- card group -->
-                            <div class="card" style="flex: 0 0 18%; margin: 30px;" th:each="result: ${productList}">
-                                <img th:src="${result.thumbnail}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title" th:text="${result.title}">Card title</h5>
-                                    <p th:text="${result.price}">publish_year</p>
-                                    <p th:text="${result.source}">publish_year</p>
-                                    <p th:text="${result.reviews}">publish_year</p>
-                                    <p th:text="${result.rating}">publish_year</p>
-                                    <a href="#" th:href="@{${result.getProduct_link()}}" class="btn btn-primary">View
-                                        Product</a>
-                                </div>
-                            </div>
-                        </div> <!-- end of card group -->
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
+            </div> <!-- end of card group -->
+        </section>
     </div>
 
-
-</div>
-
-
-</div>
-
-<div th:replace="~{/components/footer :: footer}">  </div>
-</section>
-
+</main>
+<footer th:replace="~{/components/footer :: footer}">  </footer>
 </body>
 </html>
